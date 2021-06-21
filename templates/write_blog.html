@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.icon">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        function getParameterByName(name, url = window.location.href) {
+          name = name.replace(/[\[\]]/g, '\\$&');
+          var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        var id = getParameterByName('id')
+        $(document).ready(function(){          
+          $.get(`https://s3.us-east-2.amazonaws.com/us-east-2.german-bakery.blog/${id}.content`, (JSONData) => {                        
+            try {
+              let data = JSON.parse(JSONData)
+              $("avik").append(data.content)
+            } catch(err) {
+              console.log("Expected Error: ", err)
+            }
+          })
+          $("#add_text").click(function(){
+            $("avik").append(`              
+              <textarea class="text-data content-data form-control-lg" placeholder="Enter text here"></textarea>              
+            `);
+          });
+
+        })
+
+          $(document).on("click", "#add_pic", function(){
+            /*if ($(".picture-data").length>3) {
+              alert("Cannot add more than 4 pics")
+              return
+            }*/
+              /*let id = new Date().getTime().toString()
+              $("avik").append(`
+                <input target-id="${id}" type="file" placeholder="Choose Picture" class="picture-data content-data form-control-lg">
+                <img id="img-${id}" class="picture-preview" width="180" height="150">                
+              `);*/              
+              $("#picture-input").trigger("click")
+            });
+
+
+          $(document).on("click", "#add_line", function(){
+          console.log("asdkjsadklhasdkj")
+            $("avik").append(`              
+              <br class="content-data">
+              <hr>
+            `);
+          });
+
+          $(document).on("input propertychange", "textarea", e => {                       
+            console.log($(e.target)[0].scrollHeight)
+            $(e.target).height('auto')
+            $(e.target).height($(e.target)[0].scrollHeight)
+          });
+
+          $(document).on("click", "#submit-btn", () => {
+            console.log("AJAXing")
+            $.ajax({
+              type: 'POST',
+              url: '/write_blogs_save',
+              data: JSON.stringify({
+              title: $("#title").val(),
+              content: collectData(),
+              id: id
+              }),
+              dataType : 'json',
+              }).always(() => {
+                alert("AJAX COmplete")
+                });
+            })
+
+
+
+            $(document).on("click", "#submit-btn-save", () => {
+                console.log("AJAXing")
+                      $.ajax({
+                          type: 'POST',
+                          url: '/write_blogs_save',
+                          data: JSON.stringify({
+                            title: $("#title").val(),
+                            content: collectData(),
+                            id: id
+                          }),
+                          dataType : 'json',
+                       }).always(() => {
+                        alert("Do you want to Save the Blog ?")
+                       });
+
+            })
+
+            $(document).on("click", "#submit-btn-publish", () => {
+                console.log("AJAXing")
+                      $.ajax({
+                          type: 'POST',
+                          url: '/write_blogs_publish',
+                          data: JSON.stringify({
+                            id: id
+                          }),
+                          dataType : 'json',
+                       }).always(() => {
+                        alert("Do you want to Publish the Blog ?")
+                       });
+  
+           })
+
+
+          $(document).on("click", "#submit-btn-unpublish", () => {
+                console.log("AJAXing")
+                      $.ajax({
+                          type: 'POST',
+                          url: '/write_blogs_unpublish',
+                          data: JSON.stringify({
+                            id: id
+                          }),
+                          dataType : 'json',
+                       }).always(() => {
+                        alert("Do you want to Unpublish the Blog ?")
+                       });
+
+
+
+          })
+
+        var collectData = () => {
+          let elemArr = $(".content-data")
+          console.log("Elements: ", elemArr.length)
+          let finalContent = ""
+          for (let i=0; i<elemArr.length; i++) {
+            let elem = $(elemArr[i])
+            switch(elem.prop("tagName").toString().toLowerCase()) {
+              case "br":
+                finalContent += `<br class="content-data view-linegap">`
+                break;
+              case "textarea":
+                finalContent += `<textarea class="view-text text-data content-data form-control-lg">${elem.val()}</textarea>`
+                break;
+              case "img":
+                finalContent += `<img class="view-picture picture-field content-data" src="${elem.attr("src")}" style="width: 100%; height: 300px">`
+                break;
+              case "input":
+                finalContent += `<input type="text" class="view-picture-caption content-data picture-caption no-border no-outline" placeholder="Caption this image" style="text-align: center; width: 100%" value="${elem.val()}">`
+                break;
+            }
+          }
+          return finalContent
+        }
+
+        File.prototype.convertToBase64 = function(callback){
+                var reader = new FileReader();
+                reader.onloadend = function (e) {
+                    callback(e.target.result, e.target.error);
+                };   
+                reader.readAsDataURL(this);
+        };
+
+        var getBase64FromInput = (elem) => {
+
+        }
+
+        $(document).on('change', "#picture-input", function(e){
+          let targetImageFieldId = $(e.target).attr("target-id")
+          var selectedFile = this.files[0];
+          selectedFile.convertToBase64(function(base64){
+               /*$(e.target).attr("data-base64", base64)
+               $(`#img-${targetImageFieldId}`).attr("src", base64)*/
+               $("avik").append(`
+                  <img class="picture-field content-data" src="${base64}" style="width: 100%; height: 300px">
+                  <input type="text" class="content-data picture-caption no-border no-outline" placeholder="Caption this image" style="text-align: center; width: 100%">
+                `)
+          }) 
+        });
+    </script>
+
+
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+
+    <style type="text/css">
+      body {
+        font-family: Cabin;
+      }
+
+      .container{
+        margin-left: auto;
+        margin-right: auto;
+
+      }
+
+      textarea {
+        resize: none !important;        
+        margin:0px 0px;
+        padding:5px;
+        height:auto !important;
+        line-height:auto !important;
+        width:96%;
+        display:block;
+        margin:0px auto;  
+        border-width: 5px solid black;  
+      }
+
+      .text-data {
+        width: 100%;
+        border: none !important;
+        outline: none !important;
+        overflow: hidden !important;
+      }
+
+      .text-data:focus {        
+        border: none !important;
+        outline: none !important;
+      }
+
+      .picture-caption {
+        margin-top: 5px;
+        margin-bottom: 5px;        
+      }
+
+      .no-border {
+        border: none !important;
+      }
+
+      .no-border:focus {
+        border: none !important;
+      }
+
+      .no-outline {
+        outline: none !important;
+      }
+
+      .no-outline:focus {
+        outline: none !important;
+      }
+
+
+      .picture-data {
+        width: 100%;
+        display: block;
+      }
+
+      .fa-facebook {
+  color: #333333;
+ }
+
+.fa-facebook:hover {
+  color: #4267B2;
+ }
+
+
+.fa-twitter {
+  color: #333333;
+}
+
+.fa-twitter:hover {
+  color: #00acee;
+}
+
+.fa-google {
+  color: #333333;
+ }
+
+ .fa-google:hover {
+  color: #4285F4;
+ }
+
+
+
+.fa-linkedin {
+  color: #333333;
+  
+}
+.fa-linkedin:hover {
+  color: #0e76a8 ;
+  
+}
+
+.fa-youtube {
+  color:  #333333;
+}
+
+.fa-youtube:hover {
+  color:  #FF0000;
+}
+
+.fa-instagram {
+  color: #333333 ;
+  
+}
+.fa-instagram:hover {
+  color: #8a3ab9 ;
+  
+}
+
+.fa-pinterest {
+  color: #333333;
+}
+.fa-pinterest:hover {
+  color: #E60023;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%
+  
+}
+
+
+
+.btn-color {
+  background-color: #a4508b;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+
+}
+
+.vl {
+  border-left: 3px solid #132639;
+  height: auto;
+  padding-left: 15px;
+  position: absolute;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  img#img1 {
+    display: none;
+  }
+
+  #v1 {
+    display: none;
+  }
+  #sh {
+    text-align: center !important;
+    padding-top: 10px;
+  }
+
+  #bh {
+    text-align: center;
+    padding-top: 50px;
+  }
+  
+
+
+  }
+
+
+
+
+     </style>
+
+
+
+
+    <title>Home</title>
+  </head>
+  <body>
+
+
+<!-- navbar starts here -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Title</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin_blog">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/my_blogs" tabindex="-1">Show Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/logout" tabindex="-1">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- navbar ends here -->
+
+
+
+
+
+
+<!-- body starts -->
+
+
+<br>
+<br>
+
+
+  <div class="row">
+      <div class="col-sm-9">
+        <form method='POST' action="/write_blogs" enctype = "multipart/form-data" id="cltd">
+        <!-- <label for="title">Title</label>
+        <input type="text" class="form-control-lg text-data" id="title" name="title" value="" placeholder="Enter title of the blog" style="width: 100%"> -->
+        <br>
+        <br>      
+        <div class="container">
+          <avik id="ar">
+
+          </avik>
+        </div>        
+    </form>
+
+      </div>
+
+      
+      <div class="col-sm-3">
+
+        <div class="vl" style="">
+          <p><b>Add Elements</b></p>
+          <button type="button" id="add_line" class=" btn btn-outline-info">Add Line Gap</button>
+          <br><br>
+          <button type="button"  id="add_text" class=" btn btn-outline-info" style="margin-right: 15px">Add Text</button>
+          <br>
+          <input type="file" id="picture-input" style="display: none">
+          <br>
+          <button type="button" for="picture-input" id="add_pic" class=" btn btn-outline-warning" style="margin-right: 15px">Add Picture</button>
+          <br><br>
+          <button type="button" class="btn btn-outline-success " id="submit-btn-publish">Publish</button> &nbsp &nbsp
+
+          <button type="button" class="btn btn-outline-danger" id="submit-btn-unpublish">Unpublish</button>
+
+          <br>
+          <br>
+          <button type="button" class="btn btn-outline-secondary" id="submit-btn-save">Save</button>
+        </div>
+        
+
+      </div>
+
+
+
+  
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- body ends -->
+
+
+
+
+
+
+  
+  </body>
+</html>

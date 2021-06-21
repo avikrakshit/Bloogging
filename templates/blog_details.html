@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.icon">
+
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
+
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+
+    <script type="text/javascript">
+       $.get(`https://s3.us-east-2.amazonaws.com/us-east-2.german-bakery.blog/${id}.content`, (JSONData) => {            
+            let data = JSON.parse(JSONData)
+            $("p").append(data.content)
+          })
+    </script>
+
+
+     <style type="text/css">
+
+       
+      textarea {
+        resize: none !important;        
+        margin:0px 0px;
+        padding:5px;
+        height:auto !important;
+        line-height:auto !important;
+        width:96%;
+        display:block;
+        margin:0px auto; 
+        overflow: visible !important; 
+          
+      }
+
+      .text-data {
+        width: 100%;
+        border: none !important;
+        outline: none !important;
+        /*overflow: hidden !important;*/
+        overflow: hidden !important;
+        height:auto !important;
+        line-height:auto !important;
+        
+
+      }
+
+      .text-data:focus {        
+        border: none !important;
+        outline: none !important;
+        overflow: hidden !important;
+        height:auto !important;
+        line-height:auto !important;
+
+      }
+
+      .picture-caption {
+        margin-top: 5px;
+        margin-bottom: 5px;        
+      }
+
+      .no-border {
+        border: none !important;
+      }
+
+      .no-border:focus {
+        border: none !important;
+      }
+
+      .no-outline {
+        outline: none !important;
+      }
+
+      .no-outline:focus {
+        outline: none !important;
+      }
+
+
+      .picture-data {
+        width: 100%;
+        display: block;
+      }
+
+      input:disabled {
+        background: white !important;
+      }
+
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+
+  
+}
+
+
+
+.fa-facebook:hover {
+  color: #4267B2;
+ }
+
+.fa-facebook {
+  color: #333333;
+ }
+
+.fa-twitter {
+  color: #333333;
+ 
+}
+
+.fa-google {
+  color: #333333;
+ }
+
+.fa-linkedin {
+  color: #333333;
+  
+}
+
+.fa-youtube {
+  color:  #333333;
+}
+
+.fa-instagram {
+  color: #333333 ;
+  
+}
+
+.fa-pinterest {
+  color: #333333;
+}
+
+
+.fa-facebook:hover {
+  color: #4267B2;
+ }
+
+
+.fa-twitter:hover {
+  color: #00acee;
+}
+
+
+.fa-google:hover {
+  color: #4285F4;
+ }
+
+
+.fa-linkedin:hover {
+  color: #0e76a8 ;
+  
+}
+
+.fa-instagram:hover {
+  color: #8a3ab9 ;
+  
+}
+
+.fa-youtube:hover {
+  color:  #FF0000;
+}
+
+.fa-pinterest:hover {
+  color: #E60023;
+}
+
+
+
+
+.card-pos {
+  margin-left: 150px;
+}
+
+.card{
+  border-width: 0;
+  border-bottom-width: 2px;
+}
+
+body{
+  font-family: Cabin;
+  color: #262626;
+}
+
+.container {
+  margin-top: 50px;
+  height: auto;
+
+}
+
+.text-color {
+  color: #e6e6e6 !important;
+
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+  img#img1 {
+    display: none;
+  }
+
+  #sh {
+    text-align: center !important;
+    padding-top: 10px;
+  }
+
+  #bh {
+    text-align: center;
+    padding-top: 50px;
+  }
+  
+
+
+  }
+
+
+     </style>
+
+    <title>Blog Details</title>
+  </head>
+  <body>
+
+
+<!-- navbar starts here -->
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top " style="background-color: #52527a; ">
+  <div class="container-fluid">
+    <a class="navbar-brand text-color" href="/">Title</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active text-color" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-color" href="/about_us">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-color" href="/contact_us">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-color" href="/blog" tabindex="-1">Blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- navbar ends here -->
+
+
+
+
+
+
+
+
+
+<div class="container" style="">
+  <h1 class="text-capitalize">{{title | safe}}</h1>
+  <hr>
+ <br> 
+  {{content | safe}}
+
+ 
+  
+</div>
+
+
+ 
+
+<!-- footer starts -->
+
+<footer class="container" style="padding-top: 40px">
+  <hr class="featurette-divider">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>© 2017-2018 Company, Inc. &nbsp  
+          <span style='font-size:20px; '>&#8226;</span><a href="#">Privacy Policy</a> 
+          <span style='font-size:20px; '>&#8226;</span> <a href="#">Terms & Condition</a>   
+
+          <!-- Social buttons -->
+
+  <ul class="list-unstyled list-inline text-center">
+    <h4 style="color: #333333">Connect with Us</h4>
+    <li class="list-inline-item">
+      <a href="#" class="fa fa-facebook"></a>
+    </li>
+    <li class="list-inline-item">
+      <a href="#" class="fa fa-twitter"></a>
+    </li>
+    <li class="list-inline-item">
+      <a href="#" class="fa fa-google"></a>
+    </li>
+    <li class="list-inline-item">
+      <a href="#" class="fa fa-linkedin"></a>
+    </li>
+    <li class="list-inline-item">
+      <a href="#" class="fa fa-youtube"></a>
+    </li>
+    <li class="list-inline-item">
+      <a href="#" class="fa fa-instagram"></a>
+    </li>
+    <li class="list-inline-item">
+      <a href="#" class="fa fa-pinterest"></a>
+    </li>
+  </ul>
+  <!-- Social buttons -->
+        </p>
+</footer>
+
+<!-- footer ends -->
+  
+  </body>
+  <script type="text/javascript">
+    $("textarea").prop("readonly", true)
+  </script>
+
+  <script type="text/javascript">
+    $("input").prop("disabled", true)
+  </script>
+</html>
