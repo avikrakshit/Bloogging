@@ -75,8 +75,8 @@ def blog_details(id_no):
     
     s3 = boto3.client(
         's3',
-        aws_access_key_id="AKIATP5QTEPV7YAVXCWN",
-        aws_secret_access_key="nj72QXD0EsqQO5Vf0v3TBzVaR2WQDwro+6lMOLJl"                
+        aws_access_key_id="ACCESSKEY_ID",
+        aws_secret_access_key="YOUR_ACCESS_KEY"                
     )
 
     data = s3.get_object(
